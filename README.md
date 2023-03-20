@@ -1,3 +1,15 @@
 ***
 ![](docs/Welcome-README.jpg)
 ***
+![](docs/Preview-README.jpg)
+***
+![](docs/PDF-README.gif)
+***
+[![](docs/BackEnd-README.jpg)](https://github.com/AndreyHerrera/FLASK-CERTIFICATION-PDF)
+***
+![](docs/TextBackEnd-README.jpg)
+***
+[![](docs/FrontEnd-README.jpg)](https://github.com/AndreyHerrera/ANGULAR-CERTIFICATION-PDF)
+***
+![](docs/TextFrontEnd-README.jpg)
+***
