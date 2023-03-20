@@ -16,13 +16,13 @@ class PDF(FPDF):
     def date(self, text, bold, x, y, sizeFont):
         self.set_xy(x, y)
         self.set_text_color(0, 44, 118)
-        self.set_font('Arial', bold, sizeFont)
+        self.set_font('helvetica', bold, sizeFont)
         self.multi_cell(0, 10, text)
 
     def text(self, text, bold, x, y, sizeFont):
         self.set_xy(x, y)
         self.set_text_color(0, 0, 0)
-        self.set_font('Arial', bold, sizeFont)
+        self.set_font('helvetica', bold, sizeFont)
         self.multi_cell(0, 5, text)
 
 
@@ -45,8 +45,8 @@ def DownloadPDF():
     nombreEmpleado = request.get_json()['nombreEmpleado']
     cedulaEmpleado = request.get_json()['cedulaEmpleado']
     salarioEmpleado = request.get_json()['salarioEmpleado']
-    fechaInicioEmpleado = current_date_format(datetime.strptime(request.get_json()['fechaInicioEmpleado'], '%d/%m/%Y'))
-    fechaFinEmpleado = current_date_format(datetime.strptime(request.get_json()['fechaFinEmpleado'], '%d/%m/%Y'))
+    fechaInicioEmpleado = current_date_format(datetime.strptime(request.get_json()['fechaInicioEmpleado'], '%Y-%m-%d'))
+    fechaFinEmpleado = current_date_format(datetime.strptime(request.get_json()['fechaFinEmpleado'], '%Y-%m-%d'))
     textoPrincipal = 'Que el (a) Señor (a), {}, con Cédula de Ciudadanía No. {}, laboró con nosotros desde {} hasta el {}, desempeñándose como Desarrollador Full-Stack con Angular - Python | Apis con Flask - ElasticSearch - PostgreSQL - Metodologia Scrum - Pytest / Jest - AWS - GIT, con un salario ordinario de {} COP con contrato a termino indefinido.\n\nEn caso de requerir validación a esta información, por favor comunicarse con Andrey Herrera al celular 3134508305 o através del correo electrónico empleo@andreydevs.com'.format(nombreEmpleado, cedulaEmpleado, fechaInicioEmpleado, fechaFinEmpleado, salarioEmpleado)
     textoPresente = 'La presente se expide el {} a solicitud del interesado.'.format(diaRegistro)
     textoAtentamente = 'Atentamente,'
