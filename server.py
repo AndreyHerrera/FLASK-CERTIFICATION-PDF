@@ -1,9 +1,11 @@
 from flask import Flask, send_file, request
+from flask_cors import CORS
 from fpdf import FPDF
 from io import BytesIO
 from datetime import datetime
 
 app = Flask(__name__)
+CORS(app)
 
 class PDF(FPDF):
 
@@ -36,7 +38,6 @@ def current_date_format(date):
 
 @app.route('/pdf', methods=['POST'])
 def DownloadPDF():
-
     diaRegistro = current_date_format(datetime.now())
     distancia_x = 25
     textoNombreEmpresa = 'ANDREYDEVS S.A.S'
@@ -46,7 +47,7 @@ def DownloadPDF():
     salarioEmpleado = request.get_json()['salarioEmpleado']
     fechaInicioEmpleado = current_date_format(datetime.strptime(request.get_json()['fechaInicioEmpleado'], '%d/%m/%Y'))
     fechaFinEmpleado = current_date_format(datetime.strptime(request.get_json()['fechaFinEmpleado'], '%d/%m/%Y'))
-    textoPrincipal = 'Que el (a) Señor (a), {}, con Cédula de Ciudadanía No. {}, laboró con nosotros desde {} hasta el {}, desempeñándose como Desarrollador Full-Stack con Angular - Python, con un salario ordinario de {} COP con contrato a termino indefinido.\n\nEn caso de requerir validación a esta información, por favor comunicarse con Andrey Herrera al celular 3134508305 o através del correo electrónico empleo@andreydevs.com'.format(nombreEmpleado, cedulaEmpleado, fechaInicioEmpleado, fechaFinEmpleado, salarioEmpleado)
+    textoPrincipal = 'Que el (a) Señor (a), {}, con Cédula de Ciudadanía No. {}, laboró con nosotros desde {} hasta el {}, desempeñándose como Desarrollador Full-Stack con Angular - Python | Apis con Flask - ElasticSearch - PostgreSQL - Metodologia Scrum - Pytest / Jest - AWS - GIT, con un salario ordinario de {} COP con contrato a termino indefinido.\n\nEn caso de requerir validación a esta información, por favor comunicarse con Andrey Herrera al celular 3134508305 o através del correo electrónico empleo@andreydevs.com'.format(nombreEmpleado, cedulaEmpleado, fechaInicioEmpleado, fechaFinEmpleado, salarioEmpleado)
     textoPresente = 'La presente se expide el {} a solicitud del interesado.'.format(diaRegistro)
     textoAtentamente = 'Atentamente,'
     textoFirma = 'Wolfang Andrey Herrera Casallas'
